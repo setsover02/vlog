@@ -1,0 +1,357 @@
+// 01: Toggle Switch
+// 02: Checkbox, Radio common
+// 03: Checkbox
+// 04: Radio
+// 01: Toggle Switch Start
+
+.switch {
+  display: inline-block;
+  height: 28px;
+  width: 48px;
+  // basic lable margin remove
+  label {
+    margin-bottom: 0;
+  }
+  // basic checkbox hidden
+  // if switch unchecked
+  input {
+    position: absolute;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    margin-left: -999px;
+    opacity: 0;
+
+    & ~ span {
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+      float: left;
+      width: 48px;
+      height: 24px;
+      margin: 2px 0;
+      @include user-select(none);
+      // switch background color
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 48px;
+        height: 24px;
+        background: $Black-10;
+        border-radius: 12px;
+        @include box-shadow(inset 0 4px 4px $Black-30);
+        @include transition(100ms $CubicBezier);
+      }
+      // switch pointer
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background: $White;
+        @include box-shadow(0 4px 4px $Black-30);
+        @include transition(100ms $CubicBezier);
+      }
+    }
+  }
+  // if switch checked
+  input:checked {
+    & ~ span {
+      &:before {
+        background: $PrimaryDark;
+      }
+
+      &:after {
+        left: 26px;
+      }
+    }
+  }
+}
+// 01: Toggle Switch End
+// 02: Checkbox, Radio common Start
+
+.checkbox,
+.radio {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: 24px;
+  padding-top: 0;
+  padding-left: 32px;
+  margin-bottom: 0;
+  @include transition (300ms $CubicBezier);
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked ~ span {
+      border: 2px solid $Primary;
+
+      &:after {
+        display: block;
+      }
+    }
+
+    &:disabled ~ span {
+      border: 2px solid $Black-30;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 2px solid $Black-54;
+  }
+
+  &.expand {
+    width: 100%;
+    height: 40px;
+    padding: 8px 8px 8px 40px;
+    margin: 4px 0;
+
+    p {
+      position: relative;
+      z-index: 1;
+      float: left;
+    }
+
+    .caption {
+      float: right;
+      color: map-get($StatusColor, info);
+      margin-top: 2px;
+      @include clearfix;
+    }
+
+    span {
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $Black-30;
+      border-radius: $BorderRadius;
+      @include transition (200ms $CubicBezier);
+
+      &:before {
+        content: '';
+        position: absolute;
+        border: 2px solid $Black-54;
+        border-radius: $BorderRadius;
+        top: 7px;
+        left: 7px;
+        height: 24px;
+        width: 24px;
+        @include transition (200ms $CubicBezier);
+      }
+
+      &:after {
+        left: 18px;
+      }
+    }
+
+    &:hover span {
+      border: 1px solid $Primary;
+
+      &:before {
+        background: $Primary-30;
+        border: 2px solid $Primary-30;
+      }
+    }
+
+    input {
+      &:checked {
+        & ~ p {
+          color: $White;
+        }
+
+        & ~ span {
+          background-color: $Primary;
+          border: 1px solid $Primary;
+
+          &:before {
+            border: 2px solid transparent;
+          }
+        }
+      }
+
+      &:disabled {
+        & ~ span {
+          background-color: $Black-10;
+          border: 1px solid $Black-10;
+
+          &:before {
+            background: $Black-10;
+            border-color: transparent;
+          }
+        }
+
+        & ~ p {
+          color: $Black-30;
+        }
+      }
+
+      &:checked:disabled {
+        & ~ span {
+          background-color: $Black-54 !important;
+          border: 1px solid transparent !important;
+        }
+
+        & ~ p {
+          color: $White;
+        }
+      }
+    }
+
+    &.has-danger {
+      & > span {
+        border-color: map-get($StatusColor, danger);
+
+        &:before {
+          border-color: map-get($StatusColor, danger);
+        }
+      }
+    }
+  }
+}
+// 02: Checkbox, Radio common End
+// 03: Checkbox Start
+
+.checkbox {
+  input {
+    &:checked ~ span {
+      background: $Primary;
+    }
+
+    &:checked:disabled ~ span {
+      background: $Black-30;
+      border-color: transparent;
+    }
+  }
+
+  span {
+    border-radius: $BorderRadius;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      top: 50%;
+      left: 50%;
+      margin-left: -3px;
+      margin-top: -7px;
+      width: 7px;
+      height: 12px;
+      border: solid $White;
+      border-width: 0 3px 3px 0 !important;
+      @include rotate(45deg);
+    }
+  }
+}
+// 03: Checkbox End
+// 04: Radio Start
+
+.radio {
+  input {
+    &:checked ~ span {
+      &:after {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &:checked:disabled ~ span {
+      border-color: $Black-30;
+
+      &:after {
+        background: $Black-30;
+      }
+    }
+  }
+
+  span {
+    border-radius: 50%;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      width: 0;
+      height: 0;
+      background: $Primary;
+      @include translate (-50%, -50%);
+      @include transition(200ms);
+    }
+  }
+}
+// 04: Radio End
+// 05: com-product-modal color code Radio
+
+.colorcode-block {
+  .radio {
+    cursor: pointer;
+    width: 100%;
+    height: 32px;
+    padding-left: 40px;
+    margin: 4px 0;
+    float: left;
+
+    & > p {
+      height: 32px;
+      padding: 6px 0 10px 0;
+    }
+
+    & > span {
+      height: 32px;
+      width: 32px;
+      border-radius: $BorderRadius;
+      border-color: $Black-30;
+      @include transition(200ms);
+      // box borderline if selected
+      &:after {
+        display: none;
+        border: 2px solid $Primary;
+        border-radius: 6px;
+        top: 14px;
+        left: 14px;
+        width: 38px;
+        height: 38px;
+        background: transparent;
+        @include transition(200ms);
+      }
+    }
+
+    input:checked ~ span {
+      border-color: $Black-30;
+
+      &:after {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
+    input:disabled ~ p,
+    input:disabled ~ span {
+      opacity: 0.3;
+    }
+
+    input:checked:disabled ~ p,
+    input:checked:disabled ~ span {
+      opacity: 1;
+    }
+  }
+}

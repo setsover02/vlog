@@ -1,0 +1,82 @@
+// Color Palette
+// Variables
+//
+// Basic Color
+$black:    rgba(0, 0 ,0, 1);
+$white:    rgba(255, 255, 255, 1);
+$blue:     rgba(12, 109, 223, 1);
+$skyblue:  rgba(54, 163, 247, 1);
+$cyan:     rgba(10, 216, 221, 1);
+$green:    rgba(52, 191, 163, 1);
+$lime:     rgba(173, 207, 40,1);
+$yellow:   rgba(255, 168, 0, 1);
+$orange:   rgba(253, 137, 0, 1);
+$red:      rgba(244, 81, 108, 1);
+$purple:   rgba(219, 53, 199, 1);
+$violet:   rgba(170, 71, 247, 1);
+
+// Website Color
+$Black:    transparentize($black, .2);
+$Black-54: transparentize($black, .46);
+$Black-30: transparentize($black, .7);
+$Black-10: transparentize($black, .9);
+$Black-05: transparentize($black, .95);
+$Black-03: transparentize($black, .97);
+
+$White:    $white;
+$White-54: transparentize($white, .46);
+$White-30: transparentize($white, .7);
+$White-10: transparentize($white, .9);
+
+// Brand Color
+$PrimaryLighter:  lighten($blue, 14%);
+$PrimaryLight:    lighten($blue, 7%);
+$Primary:         $blue;
+$PrimaryDark:     darken($blue, 7%);
+$PrimaryDarker:   darken($blue, 14%);
+$Primary-30:      transparentize($blue, .7);
+
+$SecondLighter:   lighten($skyblue, 14%);
+$SecondLight:     lighten($skyblue, 7%);
+$Second:          $skyblue;
+$SecondDark:      darken($skyblue, 7%);
+$SecondDarker:    darken($skyblue, 14%);
+$Second-30:       transparentize($skyblue, 0.7);
+
+$AccentLighter:   lighten($cyan, 14%);
+$AccentLight:     lighten($cyan, 7%);
+$Accent:          $cyan;
+$AccentDark:      darken($cyan, 7%);
+$AccentDarker:    darken($cyan, 14%);
+$Accent-30:       transparentize($cyan, 0.7);
+
+// Status color
+$StatusColor: (
+  confirm: $PrimaryDark,
+  success: $green,
+  accent: $Accent,
+  info: $skyblue,
+  warning: $yellow,
+  danger: $red
+);
+// Get color map
+$Color: (
+  black: $Black,
+  white: $White,
+  primary: $Primary,
+  second: $Second,
+  accent: $Accent
+);
+
+$ColorSub: (
+  black-sub: $Black-54,
+  white-sub: $White-54,
+  primary-sub: $Primary-30,
+  second-sub: $Second-30,
+  accent-sub: $Accent-30
+);
+
+$CubicBezier: cubic-bezier(0,.81,.63,1);
+$BorderRadius: 4px;
+// Grid Basic gutter (Gutter * 2)
+$gutter: 8px;
