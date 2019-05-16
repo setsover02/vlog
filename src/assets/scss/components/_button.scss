@@ -1,0 +1,61 @@
+@mixin button {
+  height: 40px;
+  width: 100%;
+  background: $theme-primary-color;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  @include button;
+}
+
+.btn.-themechanger {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $theme-border-color;
+  margin-left: 0.5em;
+  opacity: 0.8;
+  @include transition(200ms);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &#Sunrise {
+    background: $white;
+  }
+
+  &#Dawn {
+    background: $blue200;
+  }
+
+  &#Sunset {
+    background: $blue800;
+  }
+
+  &.-selected:before {
+    font-family: 'Material Icons Round';
+    color: $orange;
+    content: "check_circle";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size: 1.5em;
+  }
+
+  &.-selected:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 38px;
+    height: 38px;
+    border: 2px solid $orange;
+    border-radius: 50%;
+  }
+}

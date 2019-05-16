@@ -1,4 +1,24 @@
+$extrathin: 100;
+$thin: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+
 body {
+  font-size: 16px; // basic fontsize
   font-family: 'Noto Serif KR', serif;
+  // font-family: 'Apple SD Gothic Neo';
   -webkit-font-smoothing: antialiased;
+  color: $base-font-color;
+}
+
+h1 {
+  font-size: 1.25em;
+  font-weight: $regular;
+}
+
+p {
+  font-size: 1.125em;
+  font-weight: $medium;
+  line-height: 1.98;
 }

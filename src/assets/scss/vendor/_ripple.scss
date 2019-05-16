@@ -21,7 +21,7 @@
   position: absolute;
   border-radius: 50%;
   // background: map-get($theme-colors, normal);
-  background: $White-30;
+  background: $white-30;
   opacity: 1;
   @include scale(0.7);
   @include animation (ripple 2s forwards);

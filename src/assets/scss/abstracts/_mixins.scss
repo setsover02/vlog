@@ -28,6 +28,16 @@
   background: -o-linear-gradient($range, $baseColor, $sideColor);
   background: linear-gradient($range, $baseColor, $sideColor);
 }
+
+@mixin linear-sunrise($dir) {
+  @include bg-gradient ($dir, $white, $black-10);
+}
+@mixin linear-dawn($dir) {
+  @include bg-gradient ($dir, $blue100, $blue200);
+}
+@mixin linear-sunset($dir) {
+  @include bg-gradient ($dir, $blue800, $blue900);
+}
 // Vendor prefixes
 // - Animations
 // - Backface visibility
@@ -93,23 +103,23 @@
 
 // Drop shadow surface
 @mixin surface-2 {
-  @include box-shadow(0 1px 2px $Black-30);
+  @include box-shadow(0 1px 2px $black-30);
 }
 
 @mixin surface-4 {
-  @include box-shadow(0 2px 4px $Black-30);
+  @include box-shadow(0 2px 4px $black-30);
 }
 
 @mixin surface-8 {
-  @include box-shadow(0 4px 8px $Black-30);
+  @include box-shadow(0 4px 8px $black-30);
 }
 
 @mixin surface-16 {
-  @include box-shadow(0 8px 16px $Black-30);
+  @include box-shadow(0 8px 16px $black-30);
 }
 
 @mixin surface-24 {
-  @include box-shadow(0 12px 24px $Black-30);
+  @include box-shadow(0 12px 24px $black-30);
 }
 
 // Box sizing

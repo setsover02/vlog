@@ -1,0 +1,18 @@
+.top0v {
+  width: 100%;
+  padding: 0px 32px;
+  height: 6rem;
+  text-align: center;
+  border-bottom: 1px solid $theme-border-subcolor;
+  @include flex;
+  @include align-items(center);
+  @include justify-content(space-between);
+  .top0v_left {
+    img {
+      height: 56px;
+      opacity: .8;
+    }
+  }
+  .top0v_right {
+  }
+}

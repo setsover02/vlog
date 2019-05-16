@@ -7,6 +7,7 @@ import router from './router'
 // jquery Loader
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 require('@/assets/js/animation.js')
+require('@/assets/js/theme.js')
 
 Vue.config.productionTip = false
 
