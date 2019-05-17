@@ -6,7 +6,7 @@
     <!-- Theme changer -->
     <div class="top0v_right">
       <router-link class="icon" to="/write" tag="a" exact><i class="material-icons-round md-32">edit</i></router-link>
-      <!-- <router-link class="icon" to="/view" tag="a" exact><i class="material-icons-round md-32">face</i></router-link> -->
+      <router-link class="icon" to="/view" tag="a" exact><i class="material-icons-round md-32">visibility</i></router-link>
       <a class="icon"><i class="material-icons-round md-32">format_paint</i></a>
       <!-- <button id="Sunrise" class="btn -themechanger -selected"  @onclick="themeHelper.theme='sunrise'"></button>
       <button id="Dawn" class="btn -themechanger"></button>

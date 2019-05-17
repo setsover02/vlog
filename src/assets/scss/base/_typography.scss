@@ -13,10 +13,47 @@ body {
   // font-family: 'Apple SD Gothic Neo';
   -webkit-font-smoothing: antialiased;
   color: $base-font-color;
+  @media screen and (max-width: 720px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+  }
 }
 
+.heading1,
 h1 {
   font-size: 1.5em;
+  font-weight: $medium;
+}
+
+.heading2,
+h2 {
+  font-size: 2.25em;
+  font-weight: $bold;
+}
+
+.heading3,
+h3 {
+  font-size: 1.57rem;
+  font-weight: $bold;
+}
+
+.heading4,
+h4 {
+  font-size: 1.25em;
+  font-weight: $bold;
+}
+
+.heading5,
+h5 {
+  font-size: 0.83em;
+  font-weight: $bold;
+}
+
+.heading6,
+h6 {
+  font-size: 0.67em;
   font-weight: $medium;
 }
 
@@ -24,4 +61,26 @@ p {
   font-size: 1.125em;
   font-weight: $regular;
   line-height: 1.98;
+  u {
+    text-decoration: none;
+    border-bottom: 1px solid $black-80;
+  }
+}
+
+u {
+  text-decoration: none;
+  border-bottom: 2px solid $black-80;
+}
+
+blockquote {
+  border-left: 4px solid $black-80;
+  margin: 1em 0;
+  padding: 0 2em;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background: $black-10;
+  font-size: 0.85em;
 }

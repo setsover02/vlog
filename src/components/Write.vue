@@ -1,129 +1,140 @@
 <template>
 <div class="container">
-  <editor-floating-menu :editor="editor" v-slot="{ commands, isActive, menu }">
-      <div
-        class="editor__floating-menu"
-        :class="{ 'is-active': menu.isActive }"
-        :style="`top: ${menu.top}px`"
-      >
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click="commands.heading({ level: 1 })"
-        >
-          H1
+  <editor-menu-bubble class="menububble" :editor="heading" v-slot="{ commands, isActive, menu }">
+    <div
+      :class="{ 'is-active': menu.isActive }"
+      :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
+    >
+      <div class="button-group">
+        <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 2 }) }" @click="commands.heading({ level: 2 })">
+          <i class="material-icons-round">title</i>
         </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click="commands.heading({ level: 2 })"
-        >
-          H2
+      </div>
+    </div>
+  </editor-menu-bubble>
+  <editor-content class="editor heading2 my3" :editor="heading" />
+  <!-- <editor-content :editor="editor" /> -->
+  <editor-menu-bubble class="menububble" :editor="editor" v-slot="{ commands, isActive, menu }">
+    <div
+      :class="{ 'is-active': menu.isActive }"
+      :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
+    >
+      <div class="button-group">
+        <button class="menububble__button" :class="{ 'is-active': isActive.bold() }" @click="commands.bold">
+          <i class="material-icons-round">format_bold</i>
         </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click="commands.heading({ level: 3 })"
-        >
-          H3
+        <button class="menububble__button" :class="{ 'is-active': isActive.italic() }" @click="commands.italic">
+          <i class="material-icons-round">format_italic</i>
         </button>
-
+        <button class="menububble__button" @click="commands.link">
+          <i class="material-icons-round">link</i>
+        </button>
+        <button class="menububble__button" :class="{ 'is-active': isActive.blockquote() }" @click="commands.blockquote">
+          <i class="material-icons-round">format_quote</i>
+        </button>
+      </div>
+      <div class="button-group">
+        <button class="menububble__button" :class="{ 'is-active': isActive.strike() }" @click="commands.strike">
+          <i class="material-icons-round">format_strikethrough</i>
+        </button>
+        <button class="menububble__button" :class="{ 'is-active': isActive.underline() }" @click="commands.underline">
+          <i class="material-icons-round">format_underlined</i>
+        </button>
+        <button class="menububble__button" :class="{ 'is-active': isActive.code() }" @click="commands.code">
+          <i class="material-icons-round">code</i>
+        </button>
+      </div>
+      <div class="button-group">
+        <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 3 }) }" @click="commands.heading({ level: 3 })">
+          <i class="material-icons-round">title</i>
+        </button>
+        <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 4 }) }" @click="commands.heading({ level: 4 })">
+          <i class="material-icons-round">text_fields</i>
+        </button>
         <button
-          class="menubar__button"
+          class="menububble__button"
           :class="{ 'is-active': isActive.bullet_list() }"
           @click="commands.bullet_list"
         >
-          <icon name="ul" />
+          <i class="material-icons-round">format_list_bulleted</i>
         </button>
-
         <button
-          class="menubar__button"
+          class="menububble__button"
           :class="{ 'is-active': isActive.ordered_list() }"
           @click="commands.ordered_list"
         >
-          <icon name="ol" />
+          <i class="material-icons-round">format_list_numbered</i>
         </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.blockquote() }"
-          @click="commands.blockquote"
-        >
-          <icon name="quote" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code_block() }"
-          @click="commands.code_block"
-        >
-          <icon name="code" />
-        </button>
-
       </div>
-    </editor-floating-menu>
-  <editor-content :editor="editor" />
+    </div>
+  </editor-menu-bubble>
+  <editor-content class="editor" :editor="editor" />
 </div>
 </template>
-
 <script>
-import Icon from '@/components/Icon'
-
-import { Editor, EditorContent, EditorFloatingMenu  } from 'tiptap'
+import { Editor, EditorContent, EditorMenuBubble } from 'tiptap'
 import {
   Blockquote,
-  BulletList,
   CodeBlock,
   HardBreak,
   Heading,
-  ListItem,
   OrderedList,
+  BulletList,
+  ListItem,
   TodoItem,
   TodoList,
   Bold,
   Code,
   Italic,
   Link,
+  Strike,
+  Underline,
   History,
 } from 'tiptap-extensions'
 
 export default {
   components: {
+    EditorMenuBubble,
     EditorContent,
-    EditorFloatingMenu
   },
   data() {
     return {
       editor: new Editor({
         extensions: [
           new Blockquote(),
-          new BulletList(),
           new CodeBlock(),
           new HardBreak(),
           new Heading({ levels: [1, 2, 3] }),
-          new ListItem(),
+          new BulletList(),
           new OrderedList(),
+          new ListItem(),
           new TodoItem(),
           new TodoList(),
-          new Link(),
           new Bold(),
           new Code(),
           new Italic(),
+          new Link(),
+          new Strike(),
+          new Underline(),
           new History(),
         ],
         content: `
-          <h2>
-            Floating Menu
-          </h2>
-          <p>
-            This is an example of a medium-like editor. Enter a new line and some buttons will appear.
-          </p>
+          <h3>부제목</h3>
+          <p>연약한 나비는 창공을 향해 날아오른다.</p>
+        `,
+      }),
+      heading: new Editor({
+        extensions: [
+          new Heading({ levels: [2] }),
+        ],
+        content: `
+          <h2>제목을 입력해주세요.</h2>
         `,
       }),
     }
+  },
+  beforeDestroy() {
+    this.editor.destroy()
   },
 }
 </script>
