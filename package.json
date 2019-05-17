@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "tiptap": "^1.19.3",
+    "tiptap-extensions": "^1.19.4",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
