@@ -1,6 +1,8 @@
 <template>
 <div class="container">
-  <editor-menu-bubble class="menububble" :editor="heading" v-slot="{ commands, isActive, menu }">
+  <editor-menu-bubble class="menububble"
+                      :editor="heading"
+                      v-slot="{ commands, isActive, menu }">
     <div
       :class="{ 'is-active': menu.isActive }"
       :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
@@ -12,63 +14,81 @@
       </div>
     </div>
   </editor-menu-bubble>
-  <editor-content class="editor heading2 my3" :editor="heading" />
-  <!-- <editor-content :editor="editor" /> -->
-  <editor-menu-bubble class="menububble" :editor="editor" v-slot="{ commands, isActive, menu }">
-    <div
-      :class="{ 'is-active': menu.isActive }"
-      :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
-    >
+  <editor-content class="editor heading2 my3"
+                  :editor="heading"
+                  data-ripple />
+  <editor-menu-bubble class="menububble"
+                      :editor="editor"
+                      v-slot="{ commands, isActive, menu }">
+    <div :class="{ 'is-active': menu.isActive }"
+      :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
       <div class="button-group">
-        <button class="menububble__button" :class="{ 'is-active': isActive.bold() }" @click="commands.bold">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.bold() }"
+                @click="commands.bold" data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_bold</i>
         </button>
-        <button class="menububble__button" :class="{ 'is-active': isActive.italic() }" @click="commands.italic">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.italic() }"
+                @click="commands.italic" data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_italic</i>
         </button>
-        <button class="menububble__button" @click="commands.link">
+        <button class="menububble__button"
+                @click="commands.link">
           <i class="material-icons-round">link</i>
         </button>
-        <button class="menububble__button" :class="{ 'is-active': isActive.blockquote() }" @click="commands.blockquote">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.blockquote() }" @click="commands.blockquote" data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_quote</i>
         </button>
       </div>
       <div class="button-group">
-        <button class="menububble__button" :class="{ 'is-active': isActive.strike() }" @click="commands.strike">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.strike() }" @click="commands.strike"data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_strikethrough</i>
         </button>
-        <button class="menububble__button" :class="{ 'is-active': isActive.underline() }" @click="commands.underline">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.underline() }"
+                @click="commands.underline"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_underlined</i>
         </button>
-        <button class="menububble__button" :class="{ 'is-active': isActive.code() }" @click="commands.code">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.code() }"
+                @click="commands.code"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">code</i>
         </button>
       </div>
       <div class="button-group">
-        <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 3 }) }" @click="commands.heading({ level: 3 })">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+                @click="commands.heading({ level: 3 })"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">title</i>
         </button>
-        <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 4 }) }" @click="commands.heading({ level: 4 })">
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.heading({ level: 4 }) }"
+                @click="commands.heading({ level: 4 })"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">text_fields</i>
         </button>
-        <button
-          class="menububble__button"
-          :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
-        >
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.bullet_list() }"
+                @click="commands.bullet_list"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_list_bulleted</i>
         </button>
-        <button
-          class="menububble__button"
-          :class="{ 'is-active': isActive.ordered_list() }"
-          @click="commands.ordered_list"
-        >
+        <button class="menububble__button"
+                :class="{ 'is-active': isActive.ordered_list() }"
+                @click="commands.ordered_list"
+                data-ripple="rgba(255,255,255,.1)">
           <i class="material-icons-round">format_list_numbered</i>
         </button>
       </div>
     </div>
   </editor-menu-bubble>
-  <editor-content class="editor" :editor="editor" />
+  <editor-content class="editor" :editor="editor" data-ripple/>
 </div>
 </template>
 <script>
