@@ -1,13 +1,16 @@
 <template>
   <header class="top0v">
-    <router-link to="/" tag="a" class="top0v_left">
-      <img src="../assets/img/logo.svg" />
+    <router-link to="/main" tag="a" class="top0v_left">
+      <h1>Blossom</h1>
     </router-link>
     <!-- Theme changer -->
     <div class="top0v_right">
-      <button id="Sunrise" class="btn -themechanger -selected"  @onclick="themeHelper.theme='sunrise'"></button>
+      <router-link class="icon" to="/write" tag="a" exact><i class="material-icons-round md-32">edit</i></router-link>
+      <!-- <router-link class="icon" to="/view" tag="a" exact><i class="material-icons-round md-32">face</i></router-link> -->
+      <a class="icon"><i class="material-icons-round md-32">format_paint</i></a>
+      <!-- <button id="Sunrise" class="btn -themechanger -selected"  @onclick="themeHelper.theme='sunrise'"></button>
       <button id="Dawn" class="btn -themechanger"></button>
-      <button id="Sunset" class="btn -themechanger" @onclick="themeHelper.theme='sunset'"></button>
+      <button id="Sunset" class="btn -themechanger" @onclick="themeHelper.theme='sunset'"></button> -->
     </div>
   </header>
 </template>

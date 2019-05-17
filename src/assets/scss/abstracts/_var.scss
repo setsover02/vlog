@@ -11,6 +11,7 @@ $black-05: transparentize($black, .95);
 $black-03: transparentize($black, .97);
 
 $white:    rgba(255, 255, 255, 1);
+$white-80: transparentize($white, .2);
 $white-54: transparentize($white, .46);
 $white-30: transparentize($white, .7);
 $white-10: transparentize($white, .9);
@@ -35,7 +36,7 @@ $ColorSub: (
   black-sub: $black-54,
   white-sub: $white-54,
 );
-
+$bezier-ease-in: cubic-bezier(.19,.13,.8,.63);
 $CubicBezier: cubic-bezier(0,.81,.63,1);
 $BorderRadius: 4px;
 // Grid Basic gutter (Gutter * 2)

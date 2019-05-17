@@ -1,18 +1,51 @@
 .top0v {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: $white-80;
   width: 100%;
-  padding: 0px 32px;
+  padding: 0 32px;
   height: 6rem;
   text-align: center;
   border-bottom: 1px solid $theme-border-subcolor;
   @include flex;
   @include align-items(center);
   @include justify-content(space-between);
+
   .top0v_left {
+    @include transition(200ms);
+
+    &:hover {
+      opacity: 0.8;
+    }
+
     img {
       height: 56px;
-      opacity: .8;
+      opacity: 0.8;
     }
   }
+
   .top0v_right {
+    .icon {
+      left: 0;
+      position: relative;
+      display: block;
+      float: left;
+      height: 48px;
+      width: 48px;
+      padding: 8px;
+      color: $black-54;
+      border-radius: 50%;
+      margin-right: 12px;
+      @include transition(600ms);
+      &:hover {
+        background: $black-05;
+      }
+      &.router-link-active {
+        left: 48px;
+        opacity: 0;
+        // color: $purple;
+      }
+    }
   }
 }
