@@ -1,7 +1,7 @@
 @mixin button {
   height: 40px;
   width: 100%;
-  background: $theme-primary-color;
+  background: var(--theme-primary-color);
   border: none;
   outline: none;
 }
@@ -15,13 +15,19 @@
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  border: 1px solid $theme-border-color;
-  margin-left: 0.5em;
+  border: 1px solid var(--theme-hover-color);
+  float: left;
   opacity: 0.8;
+  margin-bottom: 8px;
+  @include clearfix;
   @include transition(200ms);
 
   &:hover {
     opacity: 1;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
   &#Sunrise {
@@ -38,7 +44,7 @@
 
   &.-selected:before {
     font-family: 'Material Icons Round';
-    color: $orange;
+    color: var(--accent-font-color);
     content: "check_circle";
     display: block;
     position: absolute;
@@ -55,7 +61,7 @@
     left: -4px;
     width: 38px;
     height: 38px;
-    border: 2px solid $orange;
+    border: 2px solid var(--accent-font-color);
     border-radius: 50%;
   }
 }

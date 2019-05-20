@@ -21,6 +21,7 @@ $white-03: transparentize($white, .97);
 $blue100:  rgba(216, 232, 247, 1);
 $blue200:  rgba(113, 160, 207, 1);
 $blue800:  rgba(28, 57, 83, 1);
+$blue800-90:  transparentize($blue800,.1);
 $blue900:  rgba(0, 19, 36, 1);
 
 $skyblue:  rgba(54, 163, 247, 1);

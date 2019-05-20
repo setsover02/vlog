@@ -1,50 +1,47 @@
+/* eslint-disable */
 jQuery(function ($) {
-  const ThemeHelper = function() {
+  const $palette = $('#ThemePalette')
+  // Open theme panel
+  $(document).on(!$palette).on('click', '#ThemeMenu', function () {
+    $(this).toggleClass('-show').next().fadeToggle(200)
 
-    const preloadTheme = (href) => {
-      let link = document.createElement('link')
-      link.rel = "stylesheet"
-      link.href = href
-      document.head.appendChild(link)
-
-      return new Promise((resolve, reject) => {
-        link.onload = e => {
-          const sheet = e.target.sheet
-          sheet.disabled = true
-          resolve(sheet)
-        }
-        link.onerror = reject
-      })
-    }
-
-    const selectTheme = (themes, name) => {
-      if (name && !themes[name]) {
-        throw new Error(`"${name}" has not been defined as a theme.`)
+    // Close theme panel
+    $('body').on('click', function (e) {
+      var $tgPoint = $(e.target)
+      var $popCallBtn = $tgPoint.hasClass('-show')
+      var $popArea = $tgPoint.hasClass('.dropdown-menu-content')
+      if (!$popCallBtn && !$popArea) {
+        $('#ThemeMenu').removeClass('-show').next().fadeOut(200)
       }
-      Object.keys(themes).forEach(n => themes[n].disabled = (n !== name))
-    }
-
-    let themes = {}
-
-    return {
-      add(name, href) { return preloadTheme(href).then(s => themes[name] = s) },
-      set theme(name) { selectTheme(themes, name) },
-      get theme() { return Object.keys(themes).find(n => !themes[n].disabled) }
-    }
-  }
-
-  const themes = {
-    sunrise: "/assets/scss/sunrise.css",
-    dawn: "https://bootswatch.com/4/materia/bootstrap.min.css",
-    sunset: "/assets/scss/sunset.css"
-  }
-
-  const themeHelper = new ThemeHelper()
-
-  let added = Object.keys(themes).map(n => themeHelper.add(n, themes[n]))
-
-  Promise.all(added).then(sheets => {
-    console.log(`${sheets.length} themes loaded`)
-    themeHelper.theme = "sunset"
+    })
   })
+
+  const $sunrise = $('#Sunrise')
+  const $dawn = $('#Dawn')
+  const $sunset = $('#Sunset')
+
+  $(document).on(!$sunrise).on('click', '#Sunrise', function () {
+    !$sunrise.addClass('-selected')
+    $('body').removeClass('sunset')
+    $('body').removeClass('dawn')
+    !$dawn.removeClass('-selected')
+    !$sunset.removeClass('-selected')
+  })
+
+  $(document).on(!$dawn).on('click', '#Dawn', function () {
+    !$dawn.addClass('-selected')
+    $('body').addClass('dawn')
+    $('body').removeClass('sunset')
+    !$sunrise.removeClass('-selected')
+    !$sunset.removeClass('-selected')
+  })
+
+  $(document).on(!$sunset).on('click', '#Sunset', function () {
+    !$sunset.addClass('-selected')
+    $('body').addClass('sunset')
+    $('body').removeClass('dawn')
+    !$sunrise.removeClass('-selected')
+    !$dawn.removeClass('-selected')
+  })
+
 })

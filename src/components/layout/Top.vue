@@ -1,6 +1,6 @@
 <template>
   <header class="top0v" data-ripple>
-    <router-link to="/main" tag="a" class="top0v_left">
+    <router-link to="/" tag="a" class="top0v_left">
       <h1>Blossom</h1>
     </router-link>
     <!-- Theme changer -->
@@ -17,14 +17,20 @@
         <div class="active-hidden" v-tooltip.top="'목록보기'">
           <i class="material-icons-round md-32">view_list</i>
         </div>
-        <div class="active-visible" v-tooltip.top="'수정'">
+        <router-link class="active-visible" v-tooltip.top="'수정'" to="/write" tag="div">
           <i class="material-icons-round md-32">edit</i>
-        </div>
+        </router-link>
       </router-link>
-      <a class="icon" data-ripple><i class="material-icons-round md-32">format_paint</i></a>
-      <!-- <button id="Sunrise" class="btn -themechanger -selected"  @onclick="themeHelper.theme='sunrise'"></button>
-      <button id="Dawn" class="btn -themechanger"></button>
-      <button id="Sunset" class="btn -themechanger" @onclick="themeHelper.theme='sunset'"></button> -->
+      <div id="ThemePalette" class="icon" data-ripple>
+        <div id="ThemeMenu" v-tooltip.top="'테마변경'">
+          <i class="material-icons-round md-32">color_lens</i>
+        </div>
+        <div id="ThemePaletteSelector">
+          <button id="Sunrise" class="btn -themechanger -selected"></button>
+          <button id="Dawn" class="btn -themechanger"></button>
+          <button id="Sunset" class="btn -themechanger"></button>
+        </div>
+      </div>
     </div>
   </header>
 </template>

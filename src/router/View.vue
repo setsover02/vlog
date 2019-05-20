@@ -1,36 +1,8 @@
 <!-- READ ONLY -->
 <template>
   <div class="container">
-    <div class="editor">
-      <editor-menu-bubble class="menububble" :editor="editor" @hide="hideLinkMenu" v-slot="{ commands, isActive, getMarkAttrs, menu }">
-        <div
-          class="menububble"
-          :class="{ 'is-active': menu.isActive }"
-          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
-        >
-
-          <form class="menububble__form" v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)">
-            <input class="menububble__input" type="text" v-model="linkUrl" placeholder="https://" ref="linkInput" @keydown.esc="hideLinkMenu"/>
-            <button class="menububble__button" @click="setLinkUrl(commands.link, null)" type="button">
-              <i class="material-icons-round">link</i>
-            </button>
-          </form>
-
-          <template v-else>
-            <button
-              class="menububble__button"
-              @click="showLinkMenu(getMarkAttrs('link'))"
-              :class="{ 'is-active': isActive.link() }"
-            >
-              <span>{{ isActive.link() ? 'Update Link' : 'Add Link'}}</span>
-              <i class="material-icons-round">link</i>
-            </button>
-          </template>
-
-        </div>
-      </editor-menu-bubble>
-
-      <editor-content class="editor__content" :editor="editor" />
+    <div class="row editor">
+      <editor-content class="col-12 mt4 editor__content" :editor="editor" />
     </div>
   </div>
 </template>

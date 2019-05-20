@@ -12,7 +12,7 @@ body {
   font-family: 'Noto Serif KR', serif;
   // font-family: 'Apple SD Gothic Neo';
   -webkit-font-smoothing: antialiased;
-  color: $base-font-color;
+  color: var(--base-font-color);
   @media screen and (max-width: 720px) {
     font-size: 14px;
   }
@@ -63,7 +63,7 @@ p {
   line-height: 1.98;
   u {
     text-decoration: none;
-    border-bottom: 1px solid $base-font-color;
+    border-bottom: 1px solid var(--base-font-color);
   }
 }
 
@@ -73,16 +73,16 @@ p {
 }
 
 a {
-  color: $skyblue;
+  color: var(--link-font-color);
 }
 
 u {
   text-decoration: none;
-  border-bottom: 2px solid $base-font-color;
+  border-bottom: 2px solid var(--base-font-color);
 }
 
 blockquote {
-  border-left: 4px solid $base-font-color;
+  border-left: 4px solid var(--base-font-color);
   margin: 1em 0;
   padding: 0 2em;
 }

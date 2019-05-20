@@ -8,7 +8,7 @@ Vue.use(Router)
 /* eslint-disable no-new */
 export default new Router({
   routes: [
-    { path: '/main', name: 'Main', component: Main },
+    { path: '/', name: 'Main', component: Main },
     { path: '/write', name: 'Write', component: Write },
     { path: '/view', name: 'View', component: View }
   ]

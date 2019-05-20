@@ -1,7 +1,7 @@
 .vue-tooltip {
   font-size: 0.825em;
   z-index: 1010;
-  background-color: #232323;
+  background-color: var(--toolbar-color);
   // @include transition(200ms);
   .tooltip-arrow {
 

@@ -1,0 +1,65 @@
+@mixin linear-sunrise($dir) {
+  @include bg-gradient ($dir, $white, $black-10);
+}
+@mixin linear-dawn($dir) {
+  @include bg-gradient ($dir, $blue100, $blue200);
+}
+@mixin linear-sunset($dir) {
+  @include bg-gradient ($dir, $blue800, $blue900);
+}
+
+body {
+  --base-font-color: #{$black-80};
+  --sub-font-color: #{$black-54};
+  --accent-font-color: #{$orange};
+  --link-font-color: #{$skyblue};
+
+  --theme-basic-color: #{$white};
+  --theme-primary-color: #{$blue200};
+  --theme-border-color: #{$black-30};
+  --theme-border-subcolor: #{$black-10};
+
+  --theme-hover-color: #{$black-05};
+  --theme-ripple-color: #{$black-03};
+  --theme-top-color: #{$white-80};
+
+  --toolbar-color: #232323;
+  // @include linear-sunrise(to bottom);
+}
+
+body.dawn {
+  --base-font-color: #{$blue900};
+  --sub-font-color: #{$blue800};
+  --accent-font-color: #{$cyan};
+  --link-font-color: #{$cyan};
+
+  --theme-basic-color: #{$blue200};
+  --theme-primary-color: #{$blue200};
+  --theme-border-color: #{$white-30};
+  --theme-border-subcolor: #{$white-10};
+
+  --theme-hover-color: #{$white-05};
+  --theme-ripple-color: #{$white-03};
+  --theme-top-color: #{$white-05};
+
+  --toolbar-color: #{$blue800};
+  // @include linear-dawn(to bottom right);
+}
+
+body.sunset {
+  --base-font-color: #{$white};
+  --sub-font-color: #{$white-54};
+  --accent-font-color: #{$skyblue};
+  --link-font-color: #{$skyblue};
+
+  --theme-basic-color: #{$blue800};
+  --theme-primary-color: #{$blue200};
+  --theme-border-color: #{$white-30};
+  --theme-border-subcolor: #{$white-10};
+
+  --theme-hover-color: #{$white-05};
+  --theme-ripple-color: #{$white-03};
+  --theme-top-color: #{$blue800-90};
+  --toolbar-color: #{$blue900};
+  // @include linear-sunset(to bottom right);
+  }
