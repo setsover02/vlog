@@ -14,6 +14,7 @@
 
   .top0v_left {
     @include transition(200ms);
+    color: $black;
 
     &:hover {
       opacity: 0.8;
@@ -38,9 +39,11 @@
       border-radius: 50%;
       margin-right: 12px;
       @include transition(600ms);
+
       &:hover {
         background: $black-05;
       }
+
       &.router-link-active {
         left: 48px;
         opacity: 0;

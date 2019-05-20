@@ -1,0 +1,8 @@
+.foo0v {
+  width: 100%;
+  padding: 0 2em;
+  height: 4em;
+  @include flex;
+  @include align-items(center);
+  @include justify-content(flex-end);
+}

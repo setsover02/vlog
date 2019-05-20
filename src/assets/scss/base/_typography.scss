@@ -59,12 +59,21 @@ h6 {
 
 p {
   font-size: 1.125em;
-  font-weight: $light;
+  font-weight: $regular;
   line-height: 1.98;
   u {
     text-decoration: none;
     border-bottom: 1px solid $black-80;
   }
+}
+
+.caption {
+  font-size: 0.75em;
+  font-weight: $light;
+}
+
+a {
+  color: $skyblue;
 }
 
 u {

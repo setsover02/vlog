@@ -1,15 +1,44 @@
 <!-- READ ONLY -->
-
 <template>
-<div class="container">
-  <div class="editor">
-    <div class="checkbox">
-      <input type="checkbox" id="editable" v-model="editable" />
-      <label for="editable">editable</label>
+  <div class="container">
+    <div class="editor">
+      <editor-menu-bubble :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
+        <div
+          class="menububble"
+          :class="{ 'is-active': menu.isActive }"
+          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
+        >
+
+          <button
+            class="menububble__button"
+            :class="{ 'is-active': isActive.bold() }"
+            @click="commands.bold"
+          >
+            <icon name="bold" />
+          </button>
+
+          <button
+            class="menububble__button"
+            :class="{ 'is-active': isActive.italic() }"
+            @click="commands.italic"
+          >
+            <icon name="italic" />
+          </button>
+
+          <button
+            class="menububble__button"
+            :class="{ 'is-active': isActive.code() }"
+            @click="commands.code"
+          >
+            <icon name="code" />
+          </button>
+
+        </div>
+      </editor-menu-bubble>
+
+      <editor-content class="editor__content" :editor="editor" />
     </div>
-    <editor-content class="editor__content" :editor="editor" />
   </div>
-</div>
 </template>
 
 <script>
