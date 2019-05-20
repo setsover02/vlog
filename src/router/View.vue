@@ -2,36 +2,30 @@
 <template>
   <div class="container">
     <div class="editor">
-      <editor-menu-bubble :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
+      <editor-menu-bubble class="menububble" :editor="editor" @hide="hideLinkMenu" v-slot="{ commands, isActive, getMarkAttrs, menu }">
         <div
           class="menububble"
           :class="{ 'is-active': menu.isActive }"
           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
         >
 
-          <button
-            class="menububble__button"
-            :class="{ 'is-active': isActive.bold() }"
-            @click="commands.bold"
-          >
-            <icon name="bold" />
-          </button>
+          <form class="menububble__form" v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)">
+            <input class="menububble__input" type="text" v-model="linkUrl" placeholder="https://" ref="linkInput" @keydown.esc="hideLinkMenu"/>
+            <button class="menububble__button" @click="setLinkUrl(commands.link, null)" type="button">
+              <i class="material-icons-round">link</i>
+            </button>
+          </form>
 
-          <button
-            class="menububble__button"
-            :class="{ 'is-active': isActive.italic() }"
-            @click="commands.italic"
-          >
-            <icon name="italic" />
-          </button>
-
-          <button
-            class="menububble__button"
-            :class="{ 'is-active': isActive.code() }"
-            @click="commands.code"
-          >
-            <icon name="code" />
-          </button>
+          <template v-else>
+            <button
+              class="menububble__button"
+              @click="showLinkMenu(getMarkAttrs('link'))"
+              :class="{ 'is-active': isActive.link() }"
+            >
+              <span>{{ isActive.link() ? 'Update Link' : 'Add Link'}}</span>
+              <i class="material-icons-round">link</i>
+            </button>
+          </template>
 
         </div>
       </editor-menu-bubble>
@@ -45,70 +39,74 @@
 import { Editor, EditorContent, EditorMenuBubble } from 'tiptap'
 import {
   Blockquote,
+  BulletList,
   CodeBlock,
   HardBreak,
   Heading,
-  OrderedList,
-  BulletList,
   ListItem,
+  OrderedList,
   TodoItem,
   TodoList,
   Bold,
   Code,
   Italic,
   Link,
-  Strike,
-  Underline,
   History,
 } from 'tiptap-extensions'
 export default {
   components: {
-    EditorMenuBubble,
     EditorContent,
+    EditorMenuBubble,
   },
   data() {
     return {
       editor: new Editor({
-        editable: false,
         extensions: [
           new Blockquote(),
+          new BulletList(),
           new CodeBlock(),
           new HardBreak(),
           new Heading({ levels: [1, 2, 3] }),
-          new BulletList(),
-          new OrderedList(),
           new ListItem(),
+          new OrderedList(),
           new TodoItem(),
           new TodoList(),
+          new Link(),
           new Bold(),
           new Code(),
           new Italic(),
-          new Link(),
-          new Strike(),
-          new Underline(),
           new History(),
         ],
         content: `
           <h2>
-            Read-Only
+            Links
           </h2>
           <p>
-            This text is <strong>read-only</strong>. You are not able to edit something. <a href="https://scrumpy.io/">Links to fancy websites</a> are still working.
+            Try to add some links to the <a href="https://en.wikipedia.org/wiki/World_Wide_Web">world wide web</a>. By default every link will get a <code>rel="noopener noreferrer nofollow"</code> attribute.
           </p>
         `,
       }),
-      editable: false,
+      linkUrl: null,
+      linkMenuIsActive: false,
     }
   },
-  watch: {
-    editable() {
-      this.editor.setOptions({
-        editable: this.editable,
+  methods: {
+    showLinkMenu(attrs) {
+      this.linkUrl = attrs.href
+      this.linkMenuIsActive = true
+      this.$nextTick(() => {
+        this.$refs.linkInput.focus()
       })
     },
-  },
-  beforeDestroy() {
-    this.editor.destroy()
+    hideLinkMenu() {
+      this.linkUrl = null
+      this.linkMenuIsActive = false
+    },
+    setLinkUrl(command, url) {
+      command({ href: url })
+      this.hideLinkMenu()
+      this.editor.focus()
+    },
   },
 }
 </script>

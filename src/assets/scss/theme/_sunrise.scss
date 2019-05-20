@@ -1,9 +1,32 @@
-// Black and White Theme
-$base-font-color: $black-80;
-$sub-font-color: $black-54;
 
-$theme-basic-color: $white;
-$theme-primary-color: $blue200;
+  // Black and White Theme
+  $base-font-color: $black-80 !global;
+  $sub-font-color: $black-54 !global;
 
-$theme-border-color: $black-30;
-$theme-border-subcolor: $black-10;
+  $theme-basic-color: $white !global;
+  $theme-primary-color: $blue200 !global;
+
+  $theme-border-color: $black-30 !global;
+  $theme-border-subcolor: $black-10 !global;
+  $theme-hover-color: $black-05;
+  $theme-ripple-color: $black-03;
+
+  $theme-top-color: $white-80;
+
+  $toolbar-color: #232323;
+
+// #app.sunset {
+//   $base-font-color: $white !global;
+//   $sub-font-color: $white-54 !global;
+//
+//   $theme-basic-color: $blue800 !global;
+//   $theme-primary-color: $blue200 !global;
+//   $theme-hover-color: $white-05;
+//   $theme-ripple-color: $white-03;
+
+//   $theme-border-color: $white-30 !global;
+//   $theme-border-subcolor: $white-10 !global;
+
+//   $theme-top-color: $blue800;
+//   $toolbar-color: $blue800;
+// }

@@ -3,8 +3,8 @@ $color-white: #ffffff;
 $color-grey: #dddddd;
 
 .message {
-  background-color: rgba($color-black, 0.05);
-  color: rgba($color-black, 0.7);
+  background-color: $theme-hover-color;
+  color: $theme-border-color;
   padding: 1rem;
   border-radius: 6px;
   margin-bottom: 1.5rem;
@@ -12,17 +12,23 @@ $color-grey: #dddddd;
 }
 
 .editor {
+  border-radius: 0.5rem;
   position: relative;
   max-width: 100%;
   margin: 0;
   font-size: 1em;
 
+
   .ProseMirror-focused {
     outline: none;
   }
-
+  &.heading2 {
+    font-size: 2.25em;
+    font-weight: $bold;
+  }
   &__content {
     word-wrap: break-word;
+    border-radius: 0.5em;
 
     * {
       caret-color: currentColor;
@@ -31,8 +37,8 @@ $color-grey: #dddddd;
     pre {
       padding: 0.7rem 1rem;
       border-radius: 5px;
-      background: $color-black;
-      color: $color-white;
+      background: $base-font-color;
+      color: $theme-basic-color;
       font-size: 0.8rem;
       overflow-x: auto;
 
@@ -47,8 +53,8 @@ $color-grey: #dddddd;
       border-radius: 5px;
       font-size: 0.8rem;
       font-weight: bold;
-      background: rgba($color-black, 0.1);
-      color: rgba($color-black, 0.8);
+      background: $theme-border-subcolor;
+      color: $base-font-color;
     }
 
     ol,
@@ -63,14 +69,13 @@ $color-grey: #dddddd;
     }
 
     a {
-      color: inherit;
+      // color: inherit;
     }
 
     blockquote {
-      border-left: 3px solid rgba($color-black, 0.1);
-      color: rgba($color-black, 0.8);
+      border-left: 3px solid $base-font-color;
+      color: $base-font-color;
       padding-left: 0.8rem;
-      font-style: italic;
 
       p {
         margin: 0;
@@ -92,7 +97,7 @@ $color-grey: #dddddd;
       td,
       th {
         min-width: 1em;
-        border: 2px solid $color-grey;
+        border: 2px solid $theme-border-color;
         padding: 3px 5px;
         vertical-align: top;
         box-sizing: border-box;
@@ -171,11 +176,11 @@ $color-grey: #dddddd;
     cursor: pointer;
 
     &:hover {
-      background-color: rgba($color-black, 0.05);
+      background-color: $theme-hover-color;
     }
 
     &.is-active {
-      background-color: rgba($color-black, 0.1);
+      background-color: $theme-border-subcolor;
     }
   }
 }
@@ -184,7 +189,7 @@ $color-grey: #dddddd;
   position: absolute;
   display: flex;
   z-index: 20;
-  background: #232323;
+  background: $toolbar-color;
   border-radius: 5px;
   padding: 4px 0;
   margin-bottom: 0.5rem;
@@ -198,7 +203,7 @@ $color-grey: #dddddd;
     display: block;
     width: 16px;
     height: 16px;
-    border-top: 8px solid #232323;
+    border-top: 8px solid $toolbar-color;
     border-right: 8px solid transparent;
     border-bottom: 8px solid transparent;
     border-left: 8px solid transparent;
@@ -259,9 +264,15 @@ $color-grey: #dddddd;
   }
 
   &__input {
+    padding: 0.4em;
     font: inherit;
     border: none;
     background: transparent;
     color: $white;
+    font-size: 14px;
+    // outline: none;
+    &:focus {
+      outline-color: $orange;
+    }
   }
 }

@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Tooltip from 'vue-directive-tooltip'
+import 'vue-directive-tooltip/css/index.css'
+
+Vue.use(Tooltip)
 
 // jquery Loader
 import 'expose-loader?$!expose-loader?jQuery!jquery'

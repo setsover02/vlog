@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   z-index: 1000;
-  background: $white-80;
+  background: $theme-top-color;
   width: 100%;
   padding: 0 2em;
   height: 6em;
@@ -14,7 +14,7 @@
 
   .top0v_left {
     @include transition(200ms);
-    color: $black;
+    color: $base-font-color;
 
     &:hover {
       opacity: 0.8;
@@ -28,26 +28,50 @@
 
   .top0v_right {
     .icon {
-      left: 0;
       position: relative;
       display: block;
       float: left;
       height: 48px;
       width: 48px;
       padding: 8px;
-      color: $black-54;
+      color: $sub-font-color;
       border-radius: 50%;
       margin-right: 12px;
-      @include transition(600ms);
 
       &:hover {
-        background: $black-05;
+        background: $theme-hover-color;
+      }
+
+      .active-hidden {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        height: 32px;
+        @include transition(1000ms);
+      }
+
+      .active-visible {
+        position: absolute;
+        top: -4rem;
+        opacity: 0;
+        height: 32px;
+        left: 8px;
+        @include transition(600ms);
       }
 
       &.router-link-active {
-        left: 48px;
-        opacity: 0;
-        // color: $purple;
+        // if link active hidden this class
+        .active-hidden {
+          top: -4rem;
+          opacity: 0;
+          // color: $purple;
+        }
+        // if link active visible this class
+        .active-visible {
+          opacity: 1;
+          top: 8px;
+          left: 8px;
+        }
       }
     }
   }

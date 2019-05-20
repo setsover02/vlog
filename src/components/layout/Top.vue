@@ -5,8 +5,22 @@
     </router-link>
     <!-- Theme changer -->
     <div class="top0v_right">
-      <router-link class="icon" to="/write" tag="a" exact data-ripple><i class="material-icons-round md-32">edit</i></router-link>
-      <router-link class="icon" to="/view" tag="a" exact data-ripple><i class="material-icons-round md-32">visibility</i></router-link>
+      <router-link class="icon" to="/write" tag="a" exact data-ripple>
+        <div class="active-hidden" v-tooltip.top="'글쓰기'">
+          <i class="material-icons-round md-32">add</i>
+        </div>
+        <div class="active-visible" v-tooltip.top="'출판'">
+          <i class="material-icons-round md-32">publish</i>
+        </div>
+      </router-link>
+      <router-link class="icon" to="/view" tag="a" exact data-ripple>
+        <div class="active-hidden" v-tooltip.top="'목록보기'">
+          <i class="material-icons-round md-32">view_list</i>
+        </div>
+        <div class="active-visible" v-tooltip.top="'수정'">
+          <i class="material-icons-round md-32">edit</i>
+        </div>
+      </router-link>
       <a class="icon" data-ripple><i class="material-icons-round md-32">format_paint</i></a>
       <!-- <button id="Sunrise" class="btn -themechanger -selected"  @onclick="themeHelper.theme='sunrise'"></button>
       <button id="Dawn" class="btn -themechanger"></button>
