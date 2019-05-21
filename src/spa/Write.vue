@@ -1,20 +1,10 @@
 <template>
 <div class="container">
+  <input v-model="writer" />
   <div class="row editor">
-    <!-- <editor-menu-bubble class="menububble"
-                        :editor="heading"
-                        v-slot="{ commands, isActive, menu }">
-      <div :class="{ 'is-active': menu.isActive }"
-           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
-        <div class="button-group">
-          <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 2 }) }" @click="commands.heading({ level: 2 })">
-            <i class="material-icons-round">title</i>
-          </button>
-        </div>
-      </div>
-    </editor-menu-bubble> -->
     <editor-content class="col-12 editor__content heading2 mt4 mb2"
                     :editor="heading"
+                    v-model="title"
                     data-ripple />
                   </div>
   <div class="row editor">
@@ -117,12 +107,17 @@
         </div>
       </div>
     </editor-menu-bubble>
-    <editor-content class="col-12 editor__content" :editor="editor" data-ripple/>
+    <editor-content class="col-12 editor__content"
+                    :editor="editor"
+                    v-model="content"
+                    data-ripple />
+                    <button @click="write">작성</button>
   </div>
 </div>
 
 </template>
 <script>
+import data from '@/data' // dummy data
 import { Editor, EditorContent, EditorMenuBubble } from 'tiptap'
 import {
   Blockquote,
@@ -144,12 +139,20 @@ import {
 } from 'tiptap-extensions'
 
 export default {
+  name: 'create',
   components: {
     EditorMenuBubble,
     EditorContent,
   },
+
+  props: [ 'value' ],
+
   data() {
     return {
+      data: data,
+      writer: "",
+      title: "",
+      content: "",
       heading: new Editor({
         extensions: [
           new Heading({ levels: [2] }),
@@ -188,6 +191,16 @@ export default {
     }
   },
   methods: {
+    write() {
+      this.data.push({
+        writer: "윤여라",
+        title: this.title,
+        content: this.content,
+      })
+      this.$router.push({
+        path: '/'
+      })
+    },
     showLinkMenu(attrs) {
       this.linkUrl = attrs.href
       this.linkMenuIsActive = true
