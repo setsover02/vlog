@@ -29,6 +29,7 @@
           <button id="Sunrise" class="btn -themechanger -selected"></button>
           <button id="Dawn" class="btn -themechanger"></button>
           <button id="Sunset" class="btn -themechanger"></button>
+          <button id="Midnight" class="btn -themechanger"></button>
         </div>
       </div>
     </div>

@@ -268,7 +268,7 @@
     font-size: 14px;
     // outline: none;
     &:focus {
-      outline-color: $orange;
+      outline-color: var(--accent-font-color);
     }
   }
 }

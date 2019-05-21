@@ -3,6 +3,7 @@ html {
 }
 body {
   background-color: var(--theme-basic-color);
+  @include linear-theme(to bottom right);
   // height: 100%;
   @include transition(200ms);
 }

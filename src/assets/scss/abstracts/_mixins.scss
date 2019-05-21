@@ -22,11 +22,15 @@
 
 @mixin bg-gradient ($range, $baseColor, $sideColor) {
   background: $baseColor;
-  background: -webkit-linear-gradient($range, $baseColor, $sideColor);
-  background: -moz-linear-gradient($range, $baseColor, $sideColor);
-  background: -ms-linear-gradient($range, $baseColor, $sideColor);
-  background: -o-linear-gradient($range, $baseColor, $sideColor);
-  background: linear-gradient($range, $baseColor, $sideColor);
+  background-image: -webkit-linear-gradient($range, $baseColor, $sideColor);
+  background-image: -moz-linear-gradient($range, $baseColor, $sideColor);
+  background-image: -ms-linear-gradient($range, $baseColor, $sideColor);
+  background-image: -o-linear-gradient($range, $baseColor, $sideColor);
+  background-image: linear-gradient($range, $baseColor, $sideColor);
+}
+
+@mixin linear-theme($dir) {
+  @include bg-gradient ($dir, var(--theme-basic-color), var(--theme-second-color));
 }
 
 @mixin linear-sunrise($dir) {
@@ -37,6 +41,9 @@
 }
 @mixin linear-sunset($dir) {
   @include bg-gradient ($dir, $blue800, $blue900);
+}
+@mixin linear-midnight($dir) {
+  @include bg-gradient ($dir, $blue900, $black-80);
 }
 // Vendor prefixes
 // - Animations

@@ -7,7 +7,7 @@
   padding: 0 2em;
   height: 6em;
   text-align: center;
-  border-bottom: 1px solid var(--theme-border-subcolor);
+  // border-bottom: 1px solid var(--theme-border-subcolor);
   @include flex;
   @include align-items(center);
   @include justify-content(space-between);
@@ -34,7 +34,7 @@
       height: 48px;
       width: 48px;
       padding: 8px;
-      color: var(--sub-font-color);
+      color: var(--base-font-color);
       border-radius: 50%;
 
       &:hover {

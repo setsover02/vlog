@@ -3,6 +3,7 @@
 //
 // Basic Color
 $black:    rgba(0, 0 ,0, 1);
+$black-92: transparentize($black, .08);
 $black-80: transparentize($black, .2);
 $black-54: transparentize($black, .46);
 $black-30: transparentize($black, .7);
@@ -24,6 +25,7 @@ $blue800:  rgba(28, 57, 83, 1);
 $blue800-90:  transparentize($blue800,.1);
 $blue900:  rgba(0, 19, 36, 1);
 
+$blue:     rgba(0, 124, 255, 1);
 $skyblue:  rgba(54, 163, 247, 1);
 $cyan:     rgba(10, 216, 221, 1);
 $green:    rgba(52, 191, 163, 1);

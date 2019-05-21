@@ -3,7 +3,16 @@
   z-index: 1010;
   background-color: var(--toolbar-color);
   // @include transition(200ms);
-  .tooltip-arrow {
-
+  &[x-placement^="bottom"] .tooltip-arrow {
+    border-bottom-color: var(--toolbar-color);
+  }
+  &[x-placement^="top"] .tooltip-arrow {
+    border-top-color: var(--toolbar-color);
+  }
+  &[x-placement^="left"] .tooltip-arrow {
+    border-left-color: var(--toolbar-color);
+  }
+  &[x-placement^="right"] .tooltip-arrow {
+    border-right-color: var(--toolbar-color);
   }
 }

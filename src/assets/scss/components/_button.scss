@@ -42,6 +42,10 @@
     background: $blue800;
   }
 
+  &#Midnight {
+    background: $black-80;
+  }
+
   &.-selected:before {
     font-family: 'Material Icons Round';
     color: var(--accent-font-color);
