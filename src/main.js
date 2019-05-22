@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './config/router'
+import router from './router'
 import Tooltip from 'vue-directive-tooltip'
 import 'vue-directive-tooltip/css/index.css'
 
@@ -10,8 +10,8 @@ Vue.use(Tooltip)
 
 // jquery Loader
 import 'expose-loader?$!expose-loader?jQuery!jquery'
-require('@/commons/animation.js')
-require('@/commons/theme.js')
+require('@/assets/js/animation.js')
+require('@/assets/js/theme.js')
 
 Vue.config.productionTip = false
 

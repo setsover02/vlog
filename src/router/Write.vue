@@ -1,12 +1,28 @@
 <template>
 <div class="container">
-  <input v-model="writer" />
   <div class="row editor">
+    <!-- <editor-menu-bubble class="menububble"
+                        :editor="heading"
+                        v-slot="{ commands, isActive, menu }">
+      <div :class="{ 'is-active': menu.isActive }"
+           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
+        <div class="button-group">
+          <button class="menububble__button" :class="{ 'is-active': isActive.heading({ level: 2 }) }" @click="commands.heading({ level: 2 })">
+            <i class="material-icons-round">title</i>
+          </button>
+        </div>
+      </div>
+    </editor-menu-bubble> -->
     <editor-content class="col-12 editor__content heading2 mt4 mb2"
                     :editor="heading"
+<<<<<<< HEAD:src/spa/Write.vue
                     v-model="title"
                     data-ripple="data-ripple" />
   </div>
+=======
+                    data-ripple />
+                  </div>
+>>>>>>> parent of 18cef45... modify: directory structure change, v-model include:src/router/Write.vue
   <div class="row editor">
     <editor-menu-bubble class="menububble"
                         :editor="editor"
@@ -112,15 +128,20 @@
         </div>
       </div>
     </editor-menu-bubble>
+<<<<<<< HEAD:src/spa/Write.vue
     <editor-content class="col-12 editor__content"
                     :editor="editor"
                     v-model="content"
                     data-ripple="data-ripple" />
     <button @click="write">작성</button>
+=======
+    <editor-content class="col-12 editor__content" :editor="editor" data-ripple/>
+>>>>>>> parent of 18cef45... modify: directory structure change, v-model include:src/router/Write.vue
   </div>
 </div>
 </template>
 <script>
+<<<<<<< HEAD:src/spa/Write.vue
 import data from '@/data' // dummy data
 import { Editor, EditorContent, EditorMenuBubble } from 'tiptap'
 import {
@@ -232,4 +253,92 @@ export default {
     this.editor.destroy()
   }
 }
+=======
+import { Editor, EditorContent, EditorMenuBubble } from 'tiptap'
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  OrderedList,
+  BulletList,
+  ListItem,
+  TodoItem,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History,
+} from 'tiptap-extensions'
+
+export default {
+  components: {
+    EditorMenuBubble,
+    EditorContent,
+  },
+  data() {
+    return {
+      heading: new Editor({
+        extensions: [
+          new Heading({ levels: [2] }),
+        ],
+        content: `
+          <p>제목을 입력해주세요.</p>
+        `,
+        autoFocus: true,
+      }),
+      editor: new Editor({
+        extensions: [
+          new Blockquote(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Heading({ levels: [1, 2, 3] }),
+          new BulletList(),
+          new OrderedList(),
+          new ListItem(),
+          new TodoItem(),
+          new TodoList(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Link(),
+          new Strike(),
+          new Underline(),
+          new History(),
+        ],
+        content: `
+          <h3>부제목</h3>
+          <p>연약한 나비는 창공을 향해 날아오른다.</p>
+        `,
+      }),
+      linkUrl: null,
+      linkMenuIsActive: false,
+    }
+  },
+  methods: {
+    showLinkMenu(attrs) {
+      this.linkUrl = attrs.href
+      this.linkMenuIsActive = true
+      this.$nextTick(() => {
+        this.$refs.linkInput.focus()
+      })
+    },
+    hideLinkMenu() {
+      this.linkUrl = null
+      this.linkMenuIsActive = false
+    },
+    setLinkUrl(command, url) {
+      command({ href: url })
+      this.hideLinkMenu()
+      this.editor.focus()
+    },
+  },
+  beforeDestroy() {
+    this.editor.destroy()
+  },
+}
+>>>>>>> parent of 18cef45... modify: directory structure change, v-model include:src/router/Write.vue
 </script>
