@@ -5,31 +5,37 @@
     <editor-content class="col-12 editor__content heading2 mt4 mb2"
                     :editor="heading"
                     v-model="title"
-                    data-ripple />
-                  </div>
+                    data-ripple="data-ripple" />
+  </div>
   <div class="row editor">
     <editor-menu-bubble class="menububble"
                         :editor="editor"
                         @hide="hideLinkMenu"
                         v-slot="{ commands, isActive, getMarkAttrs, menu }">
-      <div :class="{ 'is-active': menu.isActive }"
-          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
+      <div :class="{ 'is-active': menu.isActive }" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
         <div class="button-group">
           <button class="menububble__button"
                   v-tooltip.top="'굵게'"
                   :class="{ 'is-active': isActive.bold() }"
-                  @click="commands.bold" data-ripple="rgba(255,255,255,.1)">
+                  @click="commands.bold"
+                  data-ripple="rgba(255,255,255,.1)">
             <i class="material-icons-round">format_bold</i>
           </button>
           <button class="menububble__button"
                   v-tooltip.top="'기울임'"
                   :class="{ 'is-active': isActive.italic() }"
-                  @click="commands.italic" data-ripple="rgba(255,255,255,.1)">
+                  @click="commands.italic"
+                  data-ripple="rgba(255,255,255,.1)">
             <i class="material-icons-round">format_italic</i>
           </button>
 
           <form class="menububble__form" v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)">
-            <input class="menububble__input" type="text" v-model="linkUrl" placeholder="https://" ref="linkInput" @keydown.esc="hideLinkMenu"/>
+            <input class="menububble__input"
+                   type="text"
+                   v-model="linkUrl"
+                   placeholder="https://"
+                   ref="linkInput"
+                   @keydown.esc="hideLinkMenu" />
             <button class="menububble__button"
                     v-tooltip.top="'링크 제거'"
                     @click="setLinkUrl(commands.link, null)"
@@ -37,18 +43,17 @@
               <i class="material-icons-round">link_off</i>
             </button>
           </form>
-          <template v-else>
-            <button class="menububble__button"
-                    v-tooltip.top="'링크 추가'"
-                    @click="showLinkMenu(getMarkAttrs('link'))"
-                    :class="{ 'is-active': isActive.link() }">
+          <template v-else="v-else">
+            <button class="menububble__button" v-tooltip.top="'링크 추가'" @click="showLinkMenu(getMarkAttrs('link'))" :class="{ 'is-active': isActive.link() }">
               <span>{{ isActive.link() ? '' : ''}}</span>
               <i class="material-icons-round">link</i>
             </button>
           </template>
           <button class="menububble__button"
                   v-tooltip.top="'인용'"
-                  :class="{ 'is-active': isActive.blockquote() }" @click="commands.blockquote" data-ripple="rgba(255,255,255,.1)">
+                  :class="{ 'is-active': isActive.blockquote() }"
+                  @click="commands.blockquote"
+                  data-ripple="rgba(255,255,255,.1)">
             <i class="material-icons-round">format_quote</i>
           </button>
         </div>
@@ -110,11 +115,10 @@
     <editor-content class="col-12 editor__content"
                     :editor="editor"
                     v-model="content"
-                    data-ripple />
-                    <button @click="write">작성</button>
+                    data-ripple="data-ripple" />
+    <button @click="write">작성</button>
   </div>
 </div>
-
 </template>
 <script>
 import data from '@/data' // dummy data
@@ -135,39 +139,43 @@ import {
   Link,
   Strike,
   Underline,
-  History,
+  History
 } from 'tiptap-extensions'
 
 export default {
   name: 'create',
   components: {
     EditorMenuBubble,
-    EditorContent,
+    EditorContent
   },
 
-  props: [ 'value' ],
+  props: ['value'],
 
   data() {
     return {
       data: data,
-      writer: "",
-      title: "",
-      content: "",
+      writer: '',
+      title: '',
+      content: '',
       heading: new Editor({
         extensions: [
-          new Heading({ levels: [2] }),
+          new Heading({
+            levels: [2]
+          })
         ],
         content: `
-          <p>제목을 입력해주세요.</p>
-        `,
-        autoFocus: true,
+                  <p>제목을 입력해주세요.</p>
+                `,
+        autoFocus: true
       }),
       editor: new Editor({
         extensions: [
           new Blockquote(),
           new CodeBlock(),
           new HardBreak(),
-          new Heading({ levels: [1, 2, 3] }),
+          new Heading({
+            levels: [1, 2, 3]
+          }),
           new BulletList(),
           new OrderedList(),
           new ListItem(),
@@ -179,23 +187,23 @@ export default {
           new Link(),
           new Strike(),
           new Underline(),
-          new History(),
+          new History()
         ],
         content: `
-          <h3>부제목</h3>
-          <p>연약한 나비는 창공을 향해 날아오른다.</p>
-        `,
+                  <h3>부제목</h3>
+                  <p>연약한 나비는 창공을 향해 날아오른다.</p>
+                `
       }),
       linkUrl: null,
-      linkMenuIsActive: false,
+      linkMenuIsActive: false
     }
   },
   methods: {
     write() {
       this.data.push({
-        writer: "윤여라",
+        writer: '윤여라',
         title: this.title,
-        content: this.content,
+        content: this.content
       })
       this.$router.push({
         path: '/'
@@ -213,13 +221,15 @@ export default {
       this.linkMenuIsActive = false
     },
     setLinkUrl(command, url) {
-      command({ href: url })
+      command({
+        href: url
+      })
       this.hideLinkMenu()
       this.editor.focus()
-    },
+    }
   },
   beforeDestroy() {
     this.editor.destroy()
-  },
+  }
 }
 </script>
