@@ -64,5 +64,4 @@ jQuery(function ($) {
     $('body').removeClass('dawn')
     $('body').removeClass('sunset')
   })
-
 })

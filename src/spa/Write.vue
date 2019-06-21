@@ -5,7 +5,7 @@
   </div>
   <div class="row editor">
     <editor-menu-bubble class="menububble" :editor="editor" @hide="hideLinkMenu" v-slot="{ commands, isActive, getMarkAttrs, menu }">
-      <div :class="{ 'is-active': menu.isActive }" :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
+      <div :class="{ 'is-active': menu.isActive }" :style="`left: ${menu.left}px; top: ${menu.top}px;`">
         <div class="button-group">
           <button class="menububble__button"
                   v-tooltip.top="'굵게'"

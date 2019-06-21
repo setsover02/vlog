@@ -1,7 +1,7 @@
 /* eslint-disable */
-jQuery(function ($) {
+jQuery(function($) {
   // Button Ripple effect Start
-  $(document).on('mousedown', '[data-ripple]', function (e) {
+  $(document).on('mousedown', '[data-ripple]', function(e) {
     var $self = $(this)
 
     if ($self.is('.btn-disabled')) {
@@ -38,11 +38,28 @@ jQuery(function ($) {
       },
       appendTo: $ripple,
       one: {
-        animationend: function () {
+        animationend: function() {
           $ripple.remove()
         }
       }
     })
   })
   // Button Ripple effect End
+  const $panel = $('.dropdown')
+
+  $(document).on(!$panel).on('click', '.dropdown', function() {
+    $(this).toggleClass('-show').next().fadeToggle(200)
+
+    // dropdown menu close
+    $('body').on('click', function(e) {
+      var $tgPoint = $(e.target)
+      var $popCallBtn = $tgPoint.hasClass('-show')
+      var $popArea = $tgPoint.hasClass('.dropdown-content')
+
+      if (!$popCallBtn && !$popArea) {
+        $('.dropdown-menu').removeClass('-show').next().fadeOut(200)
+      }
+      // alert('outside')
+    })
+  })
 })

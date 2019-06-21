@@ -22,14 +22,14 @@
         </router-link>
       </router-link>
       <div id="ThemePalette" class="icon" data-ripple>
-        <div id="ThemeMenu" v-tooltip.top="'테마변경'">
+        <!-- <div id="ThemeMenu" v-tooltip.top="'테마변경'"> -->
           <i class="material-icons-round md-32">color_lens</i>
-        </div>
+        <!-- </div> -->
         <div id="ThemePaletteSelector">
-          <button id="Sunrise" class="btn -themechanger -selected"></button>
-          <button id="Dawn" class="btn -themechanger"></button>
-          <button id="Sunset" class="btn -themechanger"></button>
-          <button id="Midnight" class="btn -themechanger"></button>
+          <button id="Sunrise" class="btn -themechanger -selected" arai-label="Sunrise"></button>
+          <button id="Dawn" class="btn -themechanger" arai-label="Dawn"></button>
+          <button id="Sunset" class="btn -themechanger" arai-label="Sunset"></button>
+          <button id="Midnight" class="btn -themechanger" arai-label="Midnight"></button>
         </div>
       </div>
     </div>
